@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+repo-add gcurse_repo.db.tar.gz *.pkg.tar.*
+rm *.old
