@@ -1,4 +1,23 @@
 #!/usr/bin/env bash
 
-repo-add gcurse_repo.db.tar.gz *.pkg.tar.*
-rm *.old
+repo_update() {
+    rm -f ./*.old && rm -f ./*.old.sig
+    repo-add gcurse_repo.db.tar.gz ./*.pkg.tar.xz --quiet --remove
+    rm -f archlabs_repo.db
+    cp -f archlabs_repo.db.tar.gz archlabs_repo.db
+    rm -f ./*.old && rm -f ./*.old.sig
+}
+
+repo_commit() {
+    MSG="repo update $(date +'%a %Y-%m-%d_%H%M%S')"
+    git commit -a -m "$MSG"
+    git push origin master
+}
+
+repo_commit
+repo_update
+
+echo
+echo
+echo "Press enter to close"
+read dummy
