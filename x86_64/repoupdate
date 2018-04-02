@@ -12,8 +12,8 @@ repo_commit() {
     git push origin master
 }
 
-repo_commit
 repo_update
+repo_commit
 
 echo
 echo
