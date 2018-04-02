@@ -3,8 +3,6 @@
 repo_update() {
     rm -f ./*.old && rm -f ./*.old.sig
     repo-add gcurse_repo.db.tar.gz ./*.pkg.tar.xz --quiet --remove
-    rm -f archlabs_repo.db
-    cp -f archlabs_repo.db.tar.gz archlabs_repo.db
     rm -f ./*.old && rm -f ./*.old.sig
 }
 
