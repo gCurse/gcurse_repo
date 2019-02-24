@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 repo_update() {
+    rm -f ./gcurse_repo.db.tar.gz && rm -f ./gcurse_repo.files.tar.gz
     rm -f ./*.old && rm -f ./*.old.sig
     repo-add gcurse_repo.db.tar.gz ./*.pkg.tar.xz --quiet --remove
     rm -f ./*.old && rm -f ./*.old.sig
