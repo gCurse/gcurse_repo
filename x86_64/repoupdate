@@ -11,11 +11,16 @@ repo_commit() {
     git add -A
     MSG="repo update $(date +'%a %Y-%m-%d_%H%M%S')"
     git commit -a -m "$MSG"
-    git push origin master
+    git push --force origin master
 }
 
-repo_update
-repo_commit
+if [[ -z "$1" ]]; then
+    repo_update
+    repo_commit
+else
+    [[ "$1" == "update" ]] && repo_update
+    [[ "$1" == "commit" ]] && repo_commit
+fi
 
 echo
 echo
